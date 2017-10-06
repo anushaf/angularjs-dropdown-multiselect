@@ -171,7 +171,10 @@ directiveModule.directive('ngDropdownMultiselect', ['$filter', '$document', '$co
 					$scope.singleSelection = false;
 				}
 			});
-
+      $scope.$watch('extraSettings', function(newValue) {
+              angular.extend($scope.settings, $scope.extraSettings || []);
+            },true);
+			
 			$scope.close = function() {
 				$scope.open = false;
 				$scope.externalEvents.onClose();
